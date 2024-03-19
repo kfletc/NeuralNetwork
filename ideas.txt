@@ -1,0 +1,17 @@
+hold out evaluation on totality of data to keep things somewhat simple
+50% for training, 25% for validation, 25% for testing, all stratified
+have module to do cross validation so its not so messy
+6 attributes - all ordinal
+convert attributes to numerical ranking (1-3 or 1-4)
+use sigmoid activation (want outputs ranging from 0 to 1)
+every hidden layer will have 6 node width (matching inputs)
+output layer will have 4 outputs (matching classes)
+do stochastic updates with a minibatch size of 50?
+shuffle training samples on every epoch
+use L2 loss function for ease of gradient calculation
+initialize all weights to 1 (no better ideas)
+use vector matrix operations for feed forward and back propagation
+Apply RMS prop for learning rate
+set max epochs to either 1000 or 10000
+calculate difference in loss at the end of every epoch (possibly consider for convergence)
+try depths of 3, 5, and 10
