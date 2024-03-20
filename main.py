@@ -14,8 +14,10 @@ print(main_df.head())
 train_data, test_val_data = split_data(main_df, 0.5)
 val_data, test_data = split_data(test_val_data, 0.5)
 
-test_net = network.Network(2, 1)
+test_net = network.Network(5, 100)
 test_net.train_network(train_data)
+
+print("done")
 
 
 
