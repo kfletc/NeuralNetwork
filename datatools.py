@@ -18,3 +18,19 @@ def split_data(df, percentage):
 
     return result_df_1, result_df_2
 
+def convert_data(df):
+    df['buying'] = df['buying'].replace(['vhigh', 'high', 'med', 'low'], [4.0, 3.0, 2.0, 1.0])
+    df['maint'] = df['maint'].replace(['vhigh', 'high', 'med', 'low'], [4.0, 3.0, 2.0, 1.0])
+    df['doors'] = df['doors'].replace(['2', '3', '4', '5more'], [1.0, 2.0, 3.0, 4.0])
+    df['persons'] = df['persons'].replace(['2', '4', 'more'], [1.0, 2.0, 3.0])
+    df['lug_boot'] = df['lug_boot'].replace(['small', 'med', 'big'], [1.0, 2.0, 3.0])
+    df['safety'] = df['safety'].replace(['low', 'med', 'high'], [1.0, 2.0, 3.0])
+    return df
+
+def batch_data(df, size):
+    df = df.sample(frac=1)
+    list_df = [df[i:i + size] for i in range(0, len(df), size)]
+    list_df = list_df[:-1] # last batch will be a different size in most cases
+    return list_df
+
+
