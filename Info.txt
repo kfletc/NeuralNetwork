@@ -1,5 +1,7 @@
 Information for neural network assignment - Kyle Fletcher
 
+To run network ensure pandas and numpy are available and run: python main.py
+
 1. This network was implemented in python. It uses pandas for dataframes, numpy for matrix operations, and math for the constant e.
 
 
