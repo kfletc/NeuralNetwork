@@ -1,0 +1,52 @@
+Information for neural network assignment - Kyle Fletcher
+
+1. This network was implemented in python. It uses pandas for dataframes, numpy for matrix operations, and math for the constant e.
+
+
+2. This network was trained with 50% of the total records of the data, the records were randomly selected and stratified so the
+proportion of each class in the training data is the same as the full set. 
+
+25% of the data was used as validation data, which was also stratified the same way as the training data. 
+
+The other 25% of the data was used as test data, which was naturally also stratified. 
+
+The network was made up of hidden layers with 6 neurons each to match the inputs and an output layer of width 4 to represent
+the 4 output classes. The network was fully connected The network was built 3 seperate times with 3 hidden layers, 5 hidden layers, 
+and 10 hidden layers. The activation function used was sigmoid activation and the loss function used was L2 loss. 
+
+The training method used was mini batch gradient descent with batch sizes of 25. The learning rate was chosen per weight using the rms 
+prop algorithm. The epochs were either based on an early stopping condition or had a max value of 1000 epochs. 
+
+The weights were initialized using He weight initialization which sets every weight to random number corresponding to a normal distribution 
+and then multiplies them by the square root of 2/n where n is the number of node inputs to the next layer. 
+
+Overfitting was controlled using an early stopping mechanism. If the validation accuracy dropped on a subsequent epoch, the weight matrix at 
+that point would be saved and returned if the validation accuracy didn't start improving over the next 50 epochs, stopping before the max 
+epoch count of 1000. I suspect that unless I really ran this for a lot more iterations, it was more prone to underfitting since it can take
+alot of iterations to start improving again and eventually can become very accurate. (in testing I was able to force validation accuracy to
+be greater than 95% at certain stopping points)
+
+3. No cross validation was performed. All 3 of the models generated were evaluated with validation accuracy, which also helped determine
+when to stop training each network. Hold-out method was done for picking training, validation, and test set, at 50%, 25%, and 25% of the 
+full data respectively. The model with the best validation data at the end of all this was chosen to run the test set on.
+
+4. 
+Training network with 3 hidden layers
+Total Epochs: 274
+training accuracy: 0.9432213209733488
+validation accuracy: 0.9467592592592593
+
+Training network with 5 hidden layers
+Total Epochs: 270
+training accuracy: 0.9571263035921205
+validation accuracy: 0.9537037037037037
+
+Training network with 10 hidden layers
+Total Epochs: 1000
+training accuracy: 0.7010428736964078
+validation accuracy: 0.6990740740740741
+
+Best network by validation accuracy has 5 hidden layers.
+Test set accuracy on network with 5 hidden layers: 0.9353348729792148
+
+5. no ML libraries were used for this
